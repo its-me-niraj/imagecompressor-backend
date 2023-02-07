@@ -7,6 +7,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/")
+def initialPage():
+    return jsonify({"status" : "runnig"})
+
+
+
 def compress_image(image_path, output_path, percentage):
     original_image = Image.open(image_path)
     width, height = original_image.size
