@@ -34,7 +34,7 @@ def compress():
     output_filename = f"compressed_{unique_filename}"
     output_path = os.path.join(os.getenv('ROOT_COMPRESSED_PATH'), output_filename)
     newwidth, newheight = compress_image(image_path, output_path, percentage)
-    size = os.path.getsize(os.path.join("/var/www/html/compressed_images", output_filename))
+    size = os.path.getsize(os.path.join(os.getenv('ROOT_COMPRESSED_PATH'), output_filename))
     download_link = f"{os.getenv('DOWNLOAD_URL')}/download/{output_filename}"
     return jsonify({"download_link": download_link, "info" : size})
 
