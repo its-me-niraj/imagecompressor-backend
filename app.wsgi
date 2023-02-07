@@ -1,5 +1,3 @@
-# app.wsgi
-from app import app
-
-if __name__ == "__main__":
-    app.run()
+import sys
+sys.path.insert(0,"/var/www/html/")
+from app import app as application
