@@ -27,10 +27,10 @@ def compress():
     image = request.files.get("image")
     percentage = int(request.form.get("percentage"))
     unique_filename = str(uuid.uuid4()) + "_" + image.filename
-    image_path = os.path.join("images", unique_filename)
+    image_path = os.path.join("/var/www/html/images", unique_filename)
     image.save(image_path)
     output_filename = f"compressed_{unique_filename}"
-    output_path = os.path.join("compressed_images", output_filename)
+    output_path = os.path.join("/var/www/html/compressed_images", output_filename)
     newwidth, newheight = compress_image(image_path, output_path, percentage)
     size = os.path.getsize(os.path.join("compressed_images", output_filename))
     download_link = f"http://192.168.9.102:5000/download/{output_filename}"
