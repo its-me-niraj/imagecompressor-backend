@@ -11,7 +11,7 @@ CORS(app)
 
 @app.route("/")
 def hello():
-    return jsonify({"status" : "running"})
+    return jsonify({"status" : os.getenv('ROOT_COMPRESSED_PATH')})
 
 
 
