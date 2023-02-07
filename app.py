@@ -4,13 +4,17 @@ from flask import Flask, request, jsonify, send_file
 from PIL import Image
 from flask_cors import CORS
 from dotenv import load_dotenv
-load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route("/")
 def hello():
+    return jsonify({"status" : os.getenv('ROOT_COMPRESSED_PATH')})
+
+@app.route("/loadenv")
+def loadenv():
+    load_dotenv()
     return jsonify({"status" : os.getenv('ROOT_COMPRESSED_PATH')})
 
 
